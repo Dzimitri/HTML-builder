@@ -18,6 +18,11 @@ process.stdin.on('data', (data) => {
   }
   output.write(text + '\n');
 });
+// выход с нажатием клавиш ctrl+c
+process.on('SIGINT', () => {
+  process.stdout.write('See you later.\n');
+  process.exit();
+});
 // обработчик ошибок
 output.on('error', (err) => {
   console.error('An error occurred while writing:', err.message);
